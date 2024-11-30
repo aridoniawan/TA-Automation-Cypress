@@ -19,4 +19,7 @@ export default class LoginPage {
     return cy.get("h6").contains("Dashboard");
   }
 
+  static verifyLoginFailed() {
+    return cy.get("p.oxd-text.oxd-text--p.oxd-alert-content-text").contains("Invalid credentials");
+  }
 }
