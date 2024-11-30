@@ -3,6 +3,7 @@ import DirectoryFormPage from "../../pom/directoryForm.cy.js";
 
 describe("Directory Form", () => {
   it("Directory Form", () => {
+    // login
     cy.visit(
       "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
     );
@@ -16,6 +17,8 @@ describe("Directory Form", () => {
     DirectoryFormPage.buttonDirectory().click();
     cy.wait("@directory");
     DirectoryFormPage.verifyDirectory().should("be.visible");
+
+    // Input Directory
     DirectoryFormPage.insertName().type("Rebecca");
     cy.intercept("GET", "**/employees?nameOrId=Rebecca").as("searchName");
     DirectoryFormPage.clickName().click();
@@ -24,8 +27,7 @@ describe("Directory Form", () => {
     DirectoryFormPage.selectTitle().click();
     DirectoryFormPage.select().click();
     DirectoryFormPage.selectLocation().click();
-    // cy.intercept("GET", "**/employees?limit=14&offset=0").as("searchDirectory");
     DirectoryFormPage.searchButton().click();
-    // cy.wait("@searchDirectory");
+    DirectoryFormPage.verifySearch().should("be.visible");
   });
 });

@@ -6,6 +6,7 @@ describe("Login", () => {
     cy.visit(
       "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
     );
+    LoginPage.verifyLogin().should("have.text", "Login");
     LoginPage.inputUsername().type("Admin");
     LoginPage.inputPassword().type("admin123");
     cy.intercept("GET", "**/action-summary").as("actionSummary");
@@ -14,4 +15,3 @@ describe("Login", () => {
     LoginPage.verifyLoginSuccess().should("be.visible");
   });
 });
-

@@ -20,6 +20,8 @@ export default class LoginPage {
   }
 
   static verifyLoginFailed() {
-    return cy.get("p.oxd-text.oxd-text--p.oxd-alert-content-text").contains("Invalid credentials");
+    return cy
+      .get("p.oxd-text.oxd-text--p.oxd-alert-content-text")
+      .contains("Invalid credentials");
   }
 }
